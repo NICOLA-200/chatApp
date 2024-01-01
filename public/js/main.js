@@ -4,9 +4,22 @@ const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
 // Get username and room from URL
-const { username, room } = Qs.parse(location.search, {
-  ignoreQueryPrefix: true,
-});
+// const { username, room } = qs.parse(location.search, {
+//   ignoreQueryPrefix: true,
+// });
+
+let query = window.location.search
+
+ query =  query.replace(/\?/gi,"");
+ let arrQuery = query.split('&')
+
+let username = arrQuery[0].split('=')[1]
+
+let room =arrQuery[1].split('=')[1];
+
+
+
+console.log(username , room)
 
 const socket = io();
 
